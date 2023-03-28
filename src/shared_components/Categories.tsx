@@ -1,12 +1,12 @@
-import React from 'react';
-import Earphones from '/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/image-category-thumbnail-earphones.png';
-import Headphones from '../assets/shared/desktop/image-category-thumbnail-headphones.png';
-import Speakers from '/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/image-category-thumbnail-speakers.png';
-import Arrow from '/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/icon-arrow-right.svg';
+import React from "react";
+import Earphones from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/image-category-thumbnail-earphones.png";
+import Headphones from "../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import Speakers from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/image-category-thumbnail-speakers.png";
+import Arrow from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/icon-arrow-right.svg";
 
 const Categories: React.FC = () => {
     return (
-        <section className='categories'>
+        <section className="categories">
             <div>
                 <img src={Headphones} alt="Pair of black headphones with gold accents" />
                 <h3>HEADPHONES</h3>

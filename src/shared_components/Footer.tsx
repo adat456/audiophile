@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/logo.svg";
 import FacebookIcon from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/icon-facebook.svg";
 import InstagramIcon from "/home/adat456/Practice/front-end-mentor/audiophile/src/assets/shared/desktop/icon-instagram.svg";
@@ -14,10 +15,10 @@ const Footer: React.FC = () => {
             </div>
             <nav>
                 <ul>
-                    <li>HOME</li>
-                    <li>HEADPHONES</li>
-                    <li>SPEAKERS</li>
-                    <li>EARPHONES</li>
+                    <Link to="/"><li>HOME</li></Link>
+                    <Link to="/headphones"><li>HEADPHONES</li></Link>
+                    <Link to="/speakers"><li>SPEAKERS</li></Link>
+                    <Link to="earphones"><li>EARPHONES</li></Link>
                 </ul>
             </nav>
             <div className="social-media-links">
