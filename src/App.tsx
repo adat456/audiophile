@@ -14,7 +14,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/:categoryParam" element={<Category />} />
+          <Route path="/:categoryParam" element={<Category />}> 
+          </Route>
         </Routes>
         <Categories />
         <Blurb />
