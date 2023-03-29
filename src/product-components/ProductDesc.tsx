@@ -21,7 +21,7 @@ const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price }) => 
                 <p>{desc}</p>
                 <p className="price">{`$${price}`}</p>
                 <div className="cart-add">
-                    butt
+                    
                 </div>
             </div>
         </div>

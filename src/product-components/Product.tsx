@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 import ProductDesc from "./ProductDesc";
 import ProductDetails from "./ProductDetails";
+import ProductSuggestions from './ProductSuggestions';
 
 const Product: React.FC = () => {
     const { categoryParam, itemParam } = useParams();
@@ -32,6 +33,7 @@ const Product: React.FC = () => {
             <Link to={`/${categoryParam}`}>Go back</Link>
             <ProductDesc newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
             <ProductDetails features={item.features} includedItems={item.includes} />
+            <ProductSuggestions suggestions={item.others} />
         </main>
     );
 };
