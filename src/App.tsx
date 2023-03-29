@@ -7,6 +7,7 @@ import Blurb from "./shared_components/Blurb";
 import Footer from "./shared_components/Footer";
 
 import Category from "./Category";
+import Product from "./product-components/Product";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/:categoryParam" element={<Category />}> 
-          </Route>
+          <Route path="/:categoryParam/:itemParam" element={<Product />} />
+          <Route path="/:categoryParam" element={<Category />} />
         </Routes>
         <Categories />
         <Blurb />

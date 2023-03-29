@@ -15,13 +15,14 @@ const Category: React.FC = () => {
                 const categoryItemsPromise = await fetch(`http://localhost:9000/${categoryParam}`);
                 if (!categoryItemsPromise.ok) {
                     throw new Error("Category not found");
-                }
+                };
                 const categoryItemsData = await categoryItemsPromise.json();
 
                 setHeader(categoryParam?.toUpperCase());
                 setCategoryItems(categoryItemsData);
             } catch (err) {
                 // without checking that err is actually an Error, TS will claim that the type of err is unknown
+                console.log(err);
                 if (err instanceof Error) setHeader(err.message);
             }
         };
@@ -29,7 +30,7 @@ const Category: React.FC = () => {
         pullCategoryItems();
     }, [categoryParam]);
 
-    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} newProd={item.new} name={item.name} desc={item.description} slug={item.slug} image={item.categoryImage.desktop} />);
+    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} newProd={item.new} name={item.name} desc={item.description} category={categoryParam} slug={item.slug} image={item.categoryImage.desktop} />);
 
     return (
         <div>
