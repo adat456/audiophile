@@ -29,13 +29,19 @@ const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug 
     function increment() {if (numItems <= 9) setNumItems(numItems + 1);}; 
     function decrement() {if (numItems >= 1) setNumItems(numItems - 1);};
     function addToCart() {
-        const existingNumItems = window.localStorage.getItem(slug);
-        console.log(existingNumItems);
-        if (existingNumItems) {
-            const updatedNumItems = Number(existingNumItems) + numItems;
-            window.localStorage.setItem(slug, JSON.stringify(updatedNumItems));
+        const existingItem = localStorage.getItem(slug);
+
+        // check to see if an item exists by looking for a key equal to the slug
+        if (existingItem) {
+            // if the item already exists, parse the value, add the incremented number, and update local storage
+            const existingItemInfo = JSON.parse(existingItem);
+            const updatedNumItems = existingItemInfo.numItems + numItems;
+            localStorage.setItem(slug, JSON.stringify({
+                image, name, price, numItems: updatedNumItems
+            }));
         } else {
-            window.localStorage.setItem(slug, JSON.stringify(numItems));
+            // if the item does not exist, add to local storage
+            localStorage.setItem(slug, JSON.stringify({image, name, price, numItems}));
         }; 
     };
 
