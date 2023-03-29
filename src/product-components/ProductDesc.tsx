@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
+import widths from "../shared_components/Widths";
 
 interface Props {
-    image?: string,
+    image: object,
     newProd: boolean,
     name: string,
     desc: string,
@@ -9,19 +10,52 @@ interface Props {
     slug: string,
 }
 
-const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price }) => {
+const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug }) => {
     const [ numItems, setNumItems ] = useState<number>(1)
+
+    // let BigImg;
+    // let MidImg;
+    // let LittleImg;
+
+    // useEffect(() => {
+    //     async function getProdImgs(image: object) {
+    //         BigImg = await import(`.${image?.desktop}`);
+    //         MidImg = await import(`.${image?.tablet}`);
+    //         LittleImg = await import(`.${image?.mobile}`);
+    //     };
+    //     getProdImgs(image);
+    // }, [image])
+
+    function increment() {if (numItems <= 9) setNumItems(numItems + 1);}; 
+    function decrement() {if (numItems >= 1) setNumItems(numItems - 1);};
+    function addToCart() {
+        const existingNumItems = window.localStorage.getItem(slug);
+        console.log(existingNumItems);
+        if (existingNumItems) {
+            const updatedNumItems = Number(existingNumItems) + numItems;
+            window.localStorage.setItem(slug, JSON.stringify(updatedNumItems));
+        } else {
+            window.localStorage.setItem(slug, JSON.stringify(numItems));
+        }; 
+    };
 
     return (
         <div className="product-desc">
-            <img src={image} alt={name} />
+            {/* <picture>
+                <source srcSet={BigImg} media={`(min-width: ${widths.tabletCutoff}`} />
+                <source srcSet={MidImg} media={`(min-width: ${widths.mobileCutoff}`} />
+                <img src={LittleImg} alt={name} />
+            </picture> */}
             <div className="product-preview-desc">
                 <h3>{newProd ? "NEW PRODUCT" : ""}</h3>
                 <h2>{name?.toUpperCase()}</h2>
                 <p>{desc}</p>
                 <p className="price">{`$${price}`}</p>
                 <div className="cart-add">
-                    
+                    <button type="button" onClick={decrement}>-</button>
+                    <div className="cart-num">{numItems}</div>
+                    <button type="button" onClick={increment}>+</button>
+                    <button type="button" onClick={addToCart}>ADD TO CART</button>
                 </div>
             </div>
         </div>

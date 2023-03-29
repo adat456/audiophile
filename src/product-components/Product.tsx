@@ -31,7 +31,7 @@ const Product: React.FC = () => {
     return (
         <main>
             <Link to={`/${categoryParam}`}>Go back</Link>
-            <ProductDesc newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
+            <ProductDesc image={item.image} newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
             <ProductDetails features={item.features} includedItems={item.includes} />
             <ProductSuggestions suggestions={item.others} />
         </main>
