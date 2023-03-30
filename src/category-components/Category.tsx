@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import Categories from "../shared_components/Categories";
+import Blurb from "../shared_components/Blurb";
+
 import ProductPreview from "./ProductPreview";
 
 const Category: React.FC = () => {
@@ -30,7 +33,7 @@ const Category: React.FC = () => {
         pullCategoryItems();
     }, [categoryParam]);
 
-    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} newProd={item.new} name={item.name} desc={item.description} category={categoryParam} slug={item.slug} />);
+    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} image={item.categoryImage} newProd={item.new} name={item.name} desc={item.description} category={categoryParam} slug={item.slug} />);
 
     return (
         <div>
@@ -41,6 +44,8 @@ const Category: React.FC = () => {
                 </main> :
                 <h1>{header}</h1>
             }
+            <Categories />
+            <Blurb />
         </div>   
     );
 };

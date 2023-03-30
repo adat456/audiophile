@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import Categories from "../shared_components/Categories";
+import Blurb from "../shared_components/Blurb";
+
 import { ProductDesc } from "./ProductDesc";
 import ProductDetails from "./ProductDetails";
 import ProductSuggestions from './ProductSuggestions';
@@ -34,6 +37,8 @@ const Product: React.FC = () => {
             <ProductDesc image={item.image} newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
             <ProductDetails features={item.features} includedItems={item.includes} />
             <ProductSuggestions suggestions={item.others} />
+            <Categories />
+            <Blurb />
         </main>
     );
 };

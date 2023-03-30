@@ -200,6 +200,11 @@ footer .social-media-links svg {
   padding: 0 6rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
+}
+.product-preview img {
+  width: 100%;
+  height: auto;
 }
 .product-preview .product-preview-desc {
   display: flex;
@@ -243,8 +248,14 @@ footer .social-media-links svg {
 }
 
 .product-desc {
+  padding-top: 3rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
+}
+.product-desc img {
+  width: 100%;
+  height: auto;
 }
 .product-desc .product-preview-desc {
   display: flex;

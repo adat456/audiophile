@@ -13,15 +13,20 @@ interface Props {
 export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug }) => {
     const [ numItems, setNumItems ] = useState<number>(1)
 
-    // let BigImg, MidImg, LittleImg;
-    // useEffect(() => {
-    //     async function getProdImgs(image: object) {
-    //         BigImg = await import(`.${image?.desktop}`);
-    //         MidImg = await import(`.${image?.tablet}`);
-    //         LittleImg = await import(`.${image?.mobile}`);
-    //     };
-    //     getProdImgs(image);
-    // }, [image])
+    let imageSizes: string[];
+    let filePaths: object;
+    if (image) {
+        imageSizes = Object.keys(image);
+
+        imageSizes.forEach(key => {
+            let originalFilePath: string = image[key];
+            let adjustedFilePath: string = originalFilePath.slice(1);
+            filePaths = {
+                ...filePaths,
+                [key]: adjustedFilePath,
+            };
+        });
+    };
 
     function increment() {if (numItems <= 9) setNumItems(numItems + 1);}; 
     function decrement() {if (numItems >= 1) setNumItems(numItems - 1);};
@@ -44,12 +49,11 @@ export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price
 
     return (
         <div className="product-desc">
-            {/* <picture>
-                <source srcSet={BigImg} media={`(min-width: ${widths.tabletCutoff}`} />
-                <source srcSet={MidImg} media={`(min-width: ${widths.mobileCutoff}`} />
-                <img src={LittleImg} alt={name} />
-            </picture> */}
-            <img src="" alt="Product photo" />
+            <picture>
+                <source srcSet={filePaths?.desktop} media={`(min-width: ${widths.tabletCutoff}`} />
+                <source srcSet={filePaths?.tablet} media={`(min-width: ${widths.mobileCutoff}`} />
+                <img src={filePaths?.mobile} alt={name} />
+            </picture>
             <div className="product-preview-desc">
                 <h3>{newProd ? "NEW PRODUCT" : ""}</h3>
                 <h1>{name?.toUpperCase()}</h1>

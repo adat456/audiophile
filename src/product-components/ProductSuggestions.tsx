@@ -1,11 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import widths from "../shared_components/Widths";
 
 const ProductSuggestions: React.FC<{suggestions: object[]}> = ({suggestions}) => {
 
-    const suggestionsArr = suggestions?.map((item) => {
-        
+    // let imageSizes: string[];
+    // let filePaths: object[];
+    // if (suggestions) {
+    //     imageSizes = Object.keys(suggestions);
+
+    //     imageSizes.forEach(key => {
+    //         let originalFilePaths: object[] = suggestions[key].image;
+    //         let adjustedFilePaths: string = originalFilePath.slice(1);
+    //         filePaths = {
+    //             ...filePaths,
+    //             [key]: adjustedFilePath,
+    //         };
+    //     });
+    // };
+
+    const suggestionsArr = suggestions?.map((item) => {   
         let category;
         const slugArr = item.slug.split("-");
         switch (slugArr[slugArr.length - 1]) {
