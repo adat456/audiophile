@@ -73,7 +73,7 @@ header
     color: $white
 
     div
-        padding-bottom: 1.5rem
+        padding-bottom: 2rem
         border-bottom: 0.5px solid $off-white
 
     div, ul
@@ -178,6 +178,103 @@ footer
     .social-media-links svg
         height: 1.5rem
         padding-left: 1rem
+
+// styling specific to home page ////////
+.featured-prod
+    padding: 6rem
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: 0
+    display: grid
+    grid-template-columns: 1fr 2fr
+    color: $white
+
+    @media (min-width: 950px)
+        background-image: url("/assets/home/desktop/image-hero.jpg")
+    @media (min-width: 500px) and (max-width: 949px)
+        background-image: url("/assets/home/tablet/image-speaker-zx7.jpg")
+    @media (max-width: 499px)
+        background-image: url("/assets/home/mobile/image-speaker-zx7.jpg")
+
+    h1
+        font-size: 4rem
+        line-height: 4.5rem
+    
+    h1, p
+        padding-bottom: 1.5rem
+
+    a
+        color: $white
+        background-color: $orange
+        font-weight: 700
+        padding: 0.75rem 1rem
+
+        &:hover, &:focus
+            background-color: $lite-orange
+
+.home-gallery
+    padding: 4rem 6rem 2rem 6rem
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-gap: 1.5rem
+
+    h2
+        font-size: 3.5rem
+        line-height: 3.8rem
+        padding-bottom: 1.5rem
+    
+    h3
+        font-size: 2.5rem
+        padding-bottom: 1.5rem
+
+    p
+        padding-bottom: 1.5rem
+
+    .zx9, .zx7, .yx1
+        padding: 6rem
+        border-radius: 0.5rem
+
+    .zx9
+        grid-column: 1 / 3
+        display: grid
+        grid-template-columns: 1fr 1fr
+        background-color: $orange
+        position: relative
+
+        img
+            width: auto
+            height: 75%
+            position: absolute
+            bottom: 10%
+
+        div
+            grid-column: 2 / 3
+            color: $white
+            display: flex
+            flex-direction: column
+            justify-content: center
+
+    .zx7
+        grid-column: 1 / 3
+        background-repeat: no-repeat
+        background-size: cover
+
+        @media (min-width: 950px)
+            background-image: url("/home/adat456/Practice/front-end-mentor/audiophile/public/assets/home/desktop/image-speaker-zx7.jpg")
+        @media (min-width: 500px) and (max-width: 949px)
+            background-image: url("/assets/home/tablet/image-speaker-zx7.jpg")
+        @media (max-width: 499px)
+            background-image: url("/assets/home/mobile/image-speaker-zx7.jpg")
+
+    img
+        border-radius: 0.5rem
+        width: 100%
+        height: auto
+
+    .yx1
+        background-color: $off-white
+
+
 
 .category-page
     h1
