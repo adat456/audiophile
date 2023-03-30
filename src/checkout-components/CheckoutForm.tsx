@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 const CheckoutForm: React.FC = () => {
-    const [ eMoney, setEMoney ] = useState<boolean>(true);
+    const [ eMoney, setEMoney ] = useState<boolean | null>(null);
+
+    function handlePaymentType(e) {
+        if (e.target.value === "e-money") setEMoney(true);
+        if (e.target.value === "cash") setEMoney(false);
+    };
 
     return (
         <form action="POST">
@@ -21,10 +26,12 @@ const CheckoutForm: React.FC = () => {
             </fieldset>
             <fieldset>
                 <legend>PAYMENT DETAILS</legend>
-                <input type="radio" id="e-money" value="e-money" name="payment"/>
-                <label htmlFor="e-money">e-Money</label>
-                <input type="radio" id="cash" value="cash" name="payment"/>
-                <label htmlFor="cash">Cash on Delivery</label>
+                <div onChange={handlePaymentType}>
+                    <input type="radio" id="e-money" value="e-money" name="payment"/>
+                    <label htmlFor="e-money">e-Money</label>
+                    <input type="radio" id="cash" value="cash" name="payment"/>
+                    <label htmlFor="cash">Cash on Delivery</label>
+                </div>
                 {eMoney ? 
                     <fieldset>
                         <label htmlFor="e-money-number">e-Money Number<input type="number" placeholder="238521993" id="e-money-number" /></label>

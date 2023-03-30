@@ -10,13 +10,10 @@ interface Props {
     slug: string,
 }
 
-const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug }) => {
+export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug }) => {
     const [ numItems, setNumItems ] = useState<number>(1)
 
-    // let BigImg;
-    // let MidImg;
-    // let LittleImg;
-
+    // let BigImg, MidImg, LittleImg;
     // useEffect(() => {
     //     async function getProdImgs(image: object) {
     //         BigImg = await import(`.${image?.desktop}`);
@@ -52,20 +49,21 @@ const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug 
                 <source srcSet={MidImg} media={`(min-width: ${widths.mobileCutoff}`} />
                 <img src={LittleImg} alt={name} />
             </picture> */}
+            <img src="" alt="Product photo" />
             <div className="product-preview-desc">
                 <h3>{newProd ? "NEW PRODUCT" : ""}</h3>
-                <h2>{name?.toUpperCase()}</h2>
+                <h1>{name?.toUpperCase()}</h1>
                 <p>{desc}</p>
                 <p className="price">{`$${price}`}</p>
                 <div className="cart-add">
-                    <button type="button" onClick={decrement}>-</button>
-                    <div className="cart-num">{numItems}</div>
-                    <button type="button" onClick={increment}>+</button>
-                    <button type="button" onClick={addToCart}>ADD TO CART</button>
+                    <div className="adjuster">
+                        <button className="increase" type="button" onClick={decrement}>-</button>
+                        <div className="cart-num">{numItems}</div>
+                        <button className="decrease" type="button" onClick={increment}>+</button>
+                    </div>
+                    <button type="button" className="add-to-cart" onClick={addToCart}>ADD TO CART</button>
                 </div>
             </div>
         </div>
     );
 };
-
-export default ProductDesc;

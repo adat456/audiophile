@@ -30,12 +30,12 @@ const Category: React.FC = () => {
         pullCategoryItems();
     }, [categoryParam]);
 
-    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} newProd={item.new} name={item.name} desc={item.description} category={categoryParam} slug={item.slug} image={item.categoryImage.desktop} />);
+    const ProdPreviewArr = categoryItems.map((item) => <ProductPreview key={item.id} newProd={item.new} name={item.name} desc={item.description} category={categoryParam} slug={item.slug} />);
 
     return (
         <div>
             {categoryItems ?
-                <main>
+                <main className="category-page">
                     <h1>{header}</h1>
                     {ProdPreviewArr}
                 </main> :

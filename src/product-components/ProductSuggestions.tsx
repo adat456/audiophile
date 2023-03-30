@@ -23,8 +23,10 @@ const ProductSuggestions: React.FC<{suggestions: object[]}> = ({suggestions}) =>
         };
 
         return (
-            <div key={uuidv4()}>
-                <img src="" alt={item.name} />
+            <div className="suggestion" key={uuidv4()}>
+                <div className="suggestion-img">
+                    <img src="" alt={item.name} />
+                </div>
                 <p>{item.name}</p>
                 <Link to={`/${category}/${item.slug}`}>SEE PRODUCT</Link>
             </div>
