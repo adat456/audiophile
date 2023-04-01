@@ -6,6 +6,7 @@ import Blurb from "../shared_components/Blurb";
 
 import { ProductDesc } from "./ProductDesc";
 import ProductDetails from "./ProductDetails";
+import { ProductGallery } from "./ProductGallery";
 import ProductSuggestions from './ProductSuggestions';
 
 const Product: React.FC = () => {
@@ -32,14 +33,18 @@ const Product: React.FC = () => {
     }, [itemParam]);
 
     return (
-        <main className="product-page">
-            <Link to={`/${categoryParam}`}>Go back</Link>
-            <ProductDesc image={item.image} newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
-            <ProductDetails features={item.features} includedItems={item.includes} />
-            <ProductSuggestions suggestions={item.others} />
+        <div>
+            <main className="product-page">
+                <Link to={`/${categoryParam}`}>Go back</Link>
+                <ProductDesc image={item.image} newProd={item.new} name={item.name} desc={item.description} price={item.price} slug={item.slug} />
+                <ProductDetails features={item.features} includedItems={item.includes} />
+                <ProductGallery gallery={item.gallery} />
+                <ProductSuggestions suggestions={item.others} />
+            </main>
             <Categories />
             <Blurb />
-        </main>
+        </div>
+        
     );
 };
 

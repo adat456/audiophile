@@ -5,22 +5,25 @@ import widths from "../shared_components/Widths";
 
 const ProductSuggestions: React.FC<{suggestions: object[]}> = ({suggestions}) => {
 
-    // let imageSizes: string[];
-    // let filePaths: object[];
-    // if (suggestions) {
-    //     imageSizes = Object.keys(suggestions);
+    const trimmedSuggestions: object = {
+        0: {},
+        1: {},
+        2: {},
+    };
 
-    //     imageSizes.forEach(key => {
-    //         let originalFilePaths: object[] = suggestions[key].image;
-    //         let adjustedFilePaths: string = originalFilePath.slice(1);
-    //         filePaths = {
-    //             ...filePaths,
-    //             [key]: adjustedFilePath,
-    //         };
-    //     });
-    // };
+    function trimSuggestionFilePaths(array: object[]) {
+        suggestions.forEach((suggestion, index) => {
+            const entries = Object.entries(suggestion.image);
+            entries.forEach(entry => {
+                const modifiedFilePath = entry[1].slice(1);
+                trimmedSuggestions[index][entry[0]] = modifiedFilePath;
+            });
+        });
+    };
 
-    const suggestionsArr = suggestions?.map((item) => {   
+    if (suggestions) trimSuggestionFilePaths(suggestions);
+
+    const suggestionsArr = suggestions?.map((item, index) => { 
         let category;
         const slugArr = item.slug.split("-");
         switch (slugArr[slugArr.length - 1]) {
@@ -35,13 +38,15 @@ const ProductSuggestions: React.FC<{suggestions: object[]}> = ({suggestions}) =>
                 break;
             default:
                 console.log("Category not found.");
-        };
+        }
 
         return (
             <div className="suggestion" key={uuidv4()}>
-                <div className="suggestion-img">
-                    <img src="" alt={item.name} />
-                </div>
+                <picture>
+                    <source srcSet={trimmedSuggestions[index].desktop} media={`(min-width: ${widths.tabletCutoff}`} />
+                    <source srcSet={trimmedSuggestions[index].tablet} media={`(min-width: ${widths.mobileCutoff}`} />
+                    <img src={trimmedSuggestions[index].mobile} alt="" />
+                </picture>             
                 <p>{item.name}</p>
                 <Link to={`/${category}/${item.slug}`}>SEE PRODUCT</Link>
             </div>
