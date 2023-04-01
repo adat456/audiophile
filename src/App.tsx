@@ -9,10 +9,13 @@ import Category from "./category-components/Category";
 import Product from "./product-components/Product";
 import Checkout from "./checkout-components/Checkout";
 
+import ScrollToTop from "./shared_components/ScrollToTop";
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
