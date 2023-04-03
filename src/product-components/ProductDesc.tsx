@@ -13,10 +13,9 @@ interface Props {
 export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price, slug }) => {
     const [ numItems, setNumItems ] = useState<number>(1)
 
-    let imageSizes: string[];
     let filePaths: object;
     if (image) {
-        imageSizes = Object.keys(image);
+        let imageSizes = Object.keys(image);
 
         imageSizes.forEach(key => {
             let originalFilePath: string = image[key];
