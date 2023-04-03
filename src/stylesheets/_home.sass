@@ -12,16 +12,23 @@
     @media (min-width: 950px)
         background-image: url("/assets/home/desktop/image-hero.jpg")
     @media (min-width: 500px) and (max-width: 949px)
-        background-image: url("/assets/home/tablet/image-speaker-zx7.jpg")
+        background-image: url("/assets/home/tablet/image-header.jpg")
+        background-size: cover
+
+        display: flex
+        flex-direction: column
+        align-items: center
+        text-align: center
+        padding: 10rem
     @media (max-width: 499px)
-        background-image: url("/assets/home/mobile/image-speaker-zx7.jpg")
+        background-image: url("/assets/home/mobile/image-header.jpg")
 
     h1
         font-size: 4rem
         line-height: 4.5rem
     
     h1, p
-        padding-bottom: 1.5rem
+        padding-bottom: 2rem
 
     a
         color: base.$white
@@ -37,6 +44,9 @@
     display: grid
     grid-template-columns: 1fr 1fr
     grid-gap: 1.5rem
+
+    @media (min-width: 500px) and (max-width: 949px)
+        padding: 4rem 2rem
 
     h2
         font-size: 3.5rem
@@ -70,11 +80,23 @@
         background-color: base.$orange
         position: relative
 
+        @media (min-width: 500px) and (max-width: 949px)
+            display: flex
+            flex-direction: column
+            align-items: center
+            text-align: center
+
         img
             width: auto
             height: 75%
             position: absolute
             bottom: 10%
+
+            @media (min-width: 500px) and (max-width: 949px)
+                position: static
+                width: 50%
+                height: auto
+                padding-bottom: 4rem
 
         div
             grid-column: 2 / 3
@@ -89,7 +111,7 @@
         background-size: cover
 
         @media (min-width: 950px)
-            background-image: url("/home/adat456/Practice/front-end-mentor/audiophile/public/assets/home/desktop/image-speaker-zx7.jpg")
+            background-image: url("/assets/home/desktop/image-speaker-zx7.jpg")
         @media (min-width: 500px) and (max-width: 949px)
             background-image: url("/assets/home/tablet/image-speaker-zx7.jpg")
         @media (max-width: 499px)
@@ -100,5 +122,18 @@
         width: 100%
         height: auto
 
+    .yx1-image
+        border-radius: 0.5rem
+        background-repeat: no-repeat
+        background-size: cover
+
+        @media (min-width: 950px)
+            background-image: url("/assets/home/desktop/image-earphones-yx1.jpg")
+        @media (min-width: 500px) and (max-width: 949px)
+            background-image: url("/assets/home/tablet/image-earphones-yx1.jpg")
+        @media (max-width: 499px)
+            background-image: url("/assets/home/mobile/image-earphones-yx1.jpg")
+
     .yx1
         background-color: base.$off-white
+        padding: 4rem

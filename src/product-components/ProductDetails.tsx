@@ -25,7 +25,9 @@ const ProductDetails: React.FC<Props> = ({ features, includedItems }) => {
             </div>
             <div className="product-includes">
                 <h2>IN THE BOX</h2>
-                {includedItemsArr}
+                <div>
+                    {includedItemsArr}
+                </div>
             </div>
         </div>
     );

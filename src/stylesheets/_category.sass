@@ -16,17 +16,29 @@
     grid-template-columns: repeat(2, 1fr)
     grid-gap: 3rem
 
+    @media (min-width: 500px) and (max-width: 949px)
+        display: flex
+        flex-direction: column
+        margin: 4rem 0
+        padding: 0 2rem
+
     img
         width: 100%
         height: auto
+        border-radius: 0.5rem
 
     .product-preview-desc
         display: flex
         flex-direction: column
         justify-content: center
 
+        @media (min-width: 500px) and (max-width: 949px)
+            align-items: center
+            padding: 0 3rem
+            text-align: center
+
     h3
-        font-size: 0.5rem
+        font-size: 0.8rem
         color: base.$orange
         letter-spacing: 0.5rem
         padding-bottom: 1rem

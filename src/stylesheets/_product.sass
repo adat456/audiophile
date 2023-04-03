@@ -75,8 +75,18 @@
     grid-template-columns: 3fr 2fr
     grid-gap: 3rem
 
+    @media (min-width: 500px) and (max-width: 949px)
+        padding-top: 3rem
+        display: flex
+        flex-direction: column
+
+        .product-includes
+            display: grid
+            grid-template-columns: 1fr 1fr
+
     .included-item
         display: flex
+        padding-bottom: 0.8rem
 
     .quantity
         color: base.$orange
