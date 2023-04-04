@@ -4,6 +4,9 @@ header
     padding: 1.5rem 6rem 0 6rem
     background-color: base.$black
     color: base.$white
+    
+    @media (min-width: 500px) and (max-width: 949px)
+        padding: 1.5rem 2rem 0 2rem
 
     div
         padding-bottom: 2rem
@@ -14,7 +17,19 @@ header
         justify-content: space-between
         align-items: center
 
-    .logo
+        @media (min-width: 500px) and (max-width: 949px)
+            justify-content: normal
+            position: relative
+
+            .hamburger
+                padding-right: 2rem
+                height: 1.25rem
+            
+            .cart
+                position: absolute
+                right: 2rem
+
+    svg
         height: 1.5rem
         width: auto
         display: flex
@@ -26,6 +41,42 @@ header
         font-weight: 700
         font-size: 1rem
         margin-right: 1.5rem
+
+    .categories
+        max-width: 100%
+        position: fixed
+        top: 5rem
+        right: 0
+        left: 0
+        background-color: base.$white
+        z-index: 2
+
+        div.category
+            padding: 10vw 2rem 2rem 2rem
+        
+        img
+            bottom: 4.5rem
+
+        h3
+            padding-bottom: 0.75rem
+            font-size: 1rem
+            color: base.$black
+
+        div.link
+            padding: 0
+        
+        a
+            margin: 0
+            padding-right: 0.5rem
+            font-weight: 300
+            font-size: 0.9rem
+            color: base.$lite-black
+
+            &:hover, &:focus
+                text-decoration: underline
+
+    .backdrop
+        z-index: 1
 
 .categories
     padding: 2rem 6rem 
@@ -64,6 +115,9 @@ header
         color: base.$black
         font-size: 1rem
         padding-right: 0.5rem
+
+        &:hover, &:focus
+            text-decoration: underline
 
     svg
         height: 0.7rem
@@ -116,6 +170,7 @@ footer
     grid-template: 1fr 1fr / 1fr 1fr
 
     @media (min-width: 500px) and (max-width: 949px)
+        padding: 3rem 2rem
         grid-template-columns: 2fr 1fr
         grid-template-rows: auto
 
