@@ -20,6 +20,7 @@
     img
         width: 100%
         height: auto
+        border-radius: 0.5rem
 
     .product-preview-desc
         display: flex
@@ -46,25 +47,18 @@
     .cart-add, .adjuster
         display: flex
 
-    .cart-num
+    .cart-num, .increase, .decrease
         background-color: base.$grey
         font-weight: 700
         padding: 0.75rem 1rem
-
+    
     .increase, .decrease
-        background-color: base.$grey
-        font-weight: 700
-        padding: 0.75rem 1rem
-
         &:hover, &:focus
             color: base.$orange
 
     .add-to-cart
         margin-left: 1rem
-        color: base.$white
-        background-color: base.$orange
-        font-weight: 700
-        padding: 0.75rem 1rem
+        @include base.button
 
         &:hover, &:focus
             background-color: base.$lite-orange
@@ -142,11 +136,7 @@
         font-size: 1.5rem
 
     a
-        color: base.$white
-        background-color: base.$orange
-        font-weight: 700
-        padding: 0.75rem 1rem
-        max-width: 100%
+        @include base.button
 
         &:hover, &:focus
             background-color: base.$lite-orange

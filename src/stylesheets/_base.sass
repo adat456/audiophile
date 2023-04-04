@@ -66,3 +66,22 @@ button
 
 .hidden
     display: none
+
+.backdrop
+    position: fixed
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    background-color: rgba(0,0,0,0.5)
+    z-index: 1
+
+@mixin button($unfocus-color: $orange)
+    background-color: $unfocus-color
+    color: $white
+    font-weight: 700
+    padding: 0.75rem 1rem
+
+@mixin background
+    background-repeat: no-repeat
+    background-size: cover
