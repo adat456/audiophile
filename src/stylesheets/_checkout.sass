@@ -132,11 +132,32 @@ form
         padding: 0.75rem
         border-radius: 0.25rem
         border: 1px solid base.$grey
-    
+
     ::placeholder
         font-family: 'Manrope', sans-serif
-        
 
+    .payment-types
+        margin-top: 1rem
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-gap: 3rem
+
+        label
+            border: 1px solid base.$orange
+            border-radius: 0.5rem
+            padding: 1rem
+            display: flex
+            align-items: center
+
+        input
+            display: inline
+            width: 1rem
+            margin-top: 0
+            margin-right: 0.5rem
+
+    .e-money-details
+        grid-column: 1 / 3  
+    
 .cart-summary
     h2
         font-size: 2.5rem
@@ -208,7 +229,7 @@ form
 
     .summary
         padding-top: 2rem
-        padding-bottom: 3rem
+        padding-bottom: 2rem
         width: 100%
         display: flex
         
@@ -262,7 +283,8 @@ form
             font-weight: 700
 
     a
-        width: 100%
+        display: block
+        text-align: center
         @include base.button
 
     
