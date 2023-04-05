@@ -1,40 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const CartSummary: React.FC = () => {
-    const [ cartItems, setCartItems ] = useState<object[]>([]);
-    const [ total, setTotal ] = useState(0);
+const CartSummary: React.FC = ({ cartItems, total, setConf }) => {
     const shipping = 50;
 
-    useEffect(() => {
-        if (localStorage.length > 0) {
-            let updatedCart: object[] = [];
-            let total = 0;
-
-            for (let i = 0; i < localStorage.length; i++) {
-                const cartItemSlug: string = localStorage.key(i);
-                const cartItem: string = localStorage.getItem(cartItemSlug);
-                let cartItemInfo: object = JSON.parse(cartItem);
-                cartItemInfo = {
-                    ...cartItemInfo,
-                    slug: cartItemSlug,
-                };
-
-                updatedCart = [
-                    ...updatedCart, 
-                    cartItemInfo
-                ];
-
-                total += cartItemInfo.price * cartItemInfo.numItems;
-            };
-
-            setCartItems(updatedCart);
-            setTotal(total);
-        };
-    }, []);
-
     const generatedCartItems = cartItems?.map((item) => {
-        console.log(item);
         return (
             <div key={uuidv4()} className="cart-item">
                 <img src={item.image.mobile.slice(1)} alt={item.name} />
@@ -69,7 +38,14 @@ const CartSummary: React.FC = () => {
                 <p>GRAND TOTAL</p>
                 <p>{`$${total + shipping + Math.round(total * .05)}`}</p>
             </div>
-            <button type="button">CONTINUE AND PAY</button>
+            <button type="button" onClick={() => {
+                setConf(true);
+                document.documentElement.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "instant", 
+                });
+            }}>CONTINUE AND PAY</button>
         </section>
     );
 };
