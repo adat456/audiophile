@@ -24,7 +24,6 @@ export const ProductGallery: React.FC<{gallery: object}> = ({ gallery }) => {
 
     if (gallery) {
         trimFilePaths(gallery);
-        console.log(trimmedGallery);
     };
 
     return (

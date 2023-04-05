@@ -12,6 +12,7 @@ import ProductSuggestions from './ProductSuggestions';
 const Product: React.FC = () => {
     const { categoryParam, itemParam } = useParams();
     const [ item, setItem ] = useState<object | null>({})
+    const [ err, setErr ] = useState<string | null>(null);
 
     useEffect(() => {
         async function pullItemInfo() {
@@ -22,10 +23,8 @@ const Product: React.FC = () => {
                 }
                 const itemData = await itemPromise.json();
                 setItem(itemData);
-                console.log(itemData);
             } catch (err) {
-                // without checking that err is actually an Error, TS will claim that the type of err is unknown
-                // if (err instanceof Error) setHeader(err.message);
+                if (err instanceof Error) setErr(err);
             }
         };
         

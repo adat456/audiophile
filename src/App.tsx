@@ -25,7 +25,7 @@ function App() {
             <div className="backdrop" onClick={() => setCartModal(false)}></div>
             <CartPreview setCartModal={setCartModal} />
           </> : <></>}
-        <Header setCartModal={setCartModal} />
+        <Header cartModal={cartModal} setCartModal={setCartModal} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/checkout" element={<Checkout prevLocation={curLocation} />} />
