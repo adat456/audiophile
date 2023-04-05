@@ -36,16 +36,19 @@ const CartSummary: React.FC = ({ cartItems, total, setConf }) => {
             </div>
             <div className="sum">
                 <p>GRAND TOTAL</p>
-                <p>{`$${total + shipping + Math.round(total * .05)}`}</p>
+                <p>{cartItems.length > 0 ? `$${total + shipping + Math.round(total * .05)}` : "$0"}</p>
             </div>
-            <button type="button" onClick={() => {
-                setConf(true);
-                document.documentElement.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: "instant", 
-                });
-            }}>CONTINUE AND PAY</button>
+            {cartItems.length > 0 ? 
+                <button type="button" onClick={() => {
+                    setConf(true);
+                    document.documentElement.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "instant", 
+                    });
+                }}>CONTINUE AND PAY</button> :
+                <button type="button" disabled>CONTINUE AND PAY</button>
+            }
         </section>
     );
 };

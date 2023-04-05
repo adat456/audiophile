@@ -40,7 +40,7 @@ const Checkout: React.FC = ({ prevLocation }) => {
     return (
         <main className="checkout-page">
             <Link to={prevLocation}>Go back</Link>
-            <CheckoutForm />
+            <CheckoutForm cartItems={cartItems} total={total} conf={conf} setConf={setConf} />
             <CartSummary cartItems={cartItems} total={total} setConf={setConf} />
             {conf ? 
                 <>

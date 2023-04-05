@@ -46,6 +46,9 @@ header
         font-size: 1rem
         margin-right: 1.5rem
 
+        &:hover, &:focus
+            color: base.$orange
+
     .categories
         max-width: 100%
         position: fixed
@@ -76,7 +79,8 @@ header
             color: base.$lite-black
 
             &:hover, &:focus
-                text-decoration: underline
+                color: base.$orange
+                text-decoration: none
 
     .backdrop
         z-index: 1
@@ -120,7 +124,8 @@ header
         padding-right: 0.5rem
 
         &:hover, &:focus
-            text-decoration: underline
+            color: base.$orange
+            text-decoration: none
 
     svg
         height: 0.7rem

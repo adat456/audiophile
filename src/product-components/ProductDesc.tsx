@@ -44,6 +44,8 @@ export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price
             // if the item does not exist, add to local storage
             localStorage.setItem(slug, JSON.stringify({image, name, price, numItems}));
         }; 
+
+        setNumItems(1);
     };
 
     return (

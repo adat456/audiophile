@@ -28,10 +28,16 @@
         justify-content: space-between
         padding-bottom: 2rem
 
+    .subtotal p:last-child
+        font-weight: 700
+
 .cart-header
     display: flex
     justify-content: space-between
     padding-bottom: 2rem
+
+    p
+        font-weight: 700
 
     button
         font-size: 1rem
@@ -133,6 +139,9 @@ form
         border-radius: 0.25rem
         border: 1px solid base.$grey
 
+        &:invalid
+            border: 1px solid base.$lite-orange
+
     ::placeholder
         font-family: 'Manrope', sans-serif
 
@@ -199,6 +208,10 @@ form
 
         &:hover, &:focus
             background-color: base.$lite-orange
+
+    button[disabled]
+        background-color: base.$grey
+        color: base.$white
 
 
 .order-conf
