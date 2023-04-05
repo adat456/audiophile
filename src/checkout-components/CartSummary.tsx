@@ -7,29 +7,33 @@ const CartSummary: React.FC = () => {
     const shipping = 50;
 
     useEffect(() => {
-        const cartLength = localStorage.length;
-        
-        if (cartLength > 0) {
+        if (localStorage.length > 0) {
             let updatedCart: object[] = [];
-            let cartTotal = 0;
+            let total = 0;
 
-            for (let i = 0; i < cartLength; i++) {
+            for (let i = 0; i < localStorage.length; i++) {
                 const cartItemSlug: string = localStorage.key(i);
                 const cartItem: string = localStorage.getItem(cartItemSlug);
-                const cartItemInfo: object = JSON.parse(cartItem);
-                console.log(cartItemInfo);
+                let cartItemInfo: object = JSON.parse(cartItem);
+                cartItemInfo = {
+                    ...cartItemInfo,
+                    slug: cartItemSlug,
+                };
 
-                cartTotal += cartItemInfo.numItems * cartItemInfo.price;
-                
-                updatedCart = [...updatedCart, cartItemInfo];
+                updatedCart = [
+                    ...updatedCart, 
+                    cartItemInfo
+                ];
+
+                total += cartItemInfo.price * cartItemInfo.numItems;
             };
 
-            setTotal(cartTotal);
             setCartItems(updatedCart);
+            setTotal(total);
         };
     }, []);
 
-    const cartItemsArr = cartItems?.map((item) => {
+    const generatedCartItems = cartItems?.map((item) => {
         console.log(item);
         return (
             <div key={uuidv4()} className="cart-item">
@@ -48,14 +52,14 @@ const CartSummary: React.FC = () => {
     return (
         <section className="cart-summary">
             <h2>SUMMARY</h2>
-            {cartItemsArr}
+            {generatedCartItems}
             <div className="sum">
                 <p>TOTAL</p>
                 <p>{`$${total}`}</p>
             </div>
             <div className="sum">
                 <p>SHIPPING</p>
-                <p>{`$${shipping}`}</p>
+                <p>{cartItems.length > 0 ? `$${shipping}` : "$0"}</p>
             </div>
             <div className="sum">
                 <p>VAT (INCLUDED)</p>
