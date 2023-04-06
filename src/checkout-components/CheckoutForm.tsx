@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { validateName, validateEmail, validateNumber, validateAddress, validateZipcode, validateCity, validateCountry } from "./helpers";
 
-const CheckoutForm: React.FC = ({ cartItems, total, conf, setConf }) => {
+const CheckoutForm: React.FC = ({ cartItems, total, req, setConf }) => {
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ number, setNumber ] = useState("");
@@ -77,16 +77,18 @@ const CheckoutForm: React.FC = ({ cartItems, total, conf, setConf }) => {
         }
     };
 
-    if (conf) {
-        if (formRef.current.checkValidity()) {
-            sendPaymentInfo();
-            localStorage.clear();
-        } else {
-            // this may be illegal teehee
-            setConf(false);
-            formRef.current.reportValidity();
-        }
-    };
+    useEffect(() => {
+        if (req) {
+            if (formRef.current.checkValidity()) {
+                sendPaymentInfo();
+                localStorage.clear();
+                setConf(true);
+            } else {
+                setConf(false);
+                formRef.current.reportValidity();
+            }
+        };
+    }, [req]);
 
     return (
         <form action="POST" ref={formRef} autoComplete="off" noValidate>
@@ -112,8 +114,8 @@ const CheckoutForm: React.FC = ({ cartItems, total, conf, setConf }) => {
                 </div>
                 {eMoney ? 
                     <fieldset className="e-money-details">
-                        <label htmlFor="e-money-number">e-Money Number<input type="number" placeholder="238521993" value={eNumber} onChange={handleChange} id="e-money-number" /></label>
-                        <label htmlFor="e-money-pin">e-Money PIN<input type="number" placeholder="6891" value={ePin} onChange={handleChange} id="e-money-pin" /></label>
+                        <label htmlFor="e-money-number">e-Money Number<input type="text" placeholder="238521993" pattern="[0-9]{10}" maxLength="10" value={eNumber} onChange={handleChange} id="e-money-number" /></label>
+                        <label htmlFor="e-money-pin">e-Money PIN<input type="text" placeholder="6891" pattern="[0-9]{4}" maxLength="4" value={ePin} onChange={handleChange} id="e-money-pin" /></label>
                     </fieldset> :
                     <fieldset></fieldset>
                 }

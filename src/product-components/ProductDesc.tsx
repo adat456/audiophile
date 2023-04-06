@@ -52,7 +52,7 @@ export const ProductDesc: React.FC<Props> = ({ image, newProd, name, desc, price
         <div className="product-desc">
             <picture>
                 <source srcSet={filePaths?.desktop} media={`(min-width: ${widths.tabletCutoff}`} />
-                <source srcSet={filePaths?.tablet} media={`(min-width: ${widths.mobileCutoff}`} />
+                <source srcSet={filePaths?.tablet} media={"(min-width: 650px"} />
                 <img src={filePaths?.mobile} alt={name} />
             </picture>
             <div className="product-preview-desc">

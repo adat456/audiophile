@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-const CartSummary: React.FC = ({ cartItems, total, setConf }) => {
+const CartSummary: React.FC = ({ cartItems, total, setReq }) => {
     const shipping = 50;
 
     const generatedCartItems = cartItems?.map((item) => {
@@ -32,15 +32,15 @@ const CartSummary: React.FC = ({ cartItems, total, setConf }) => {
             </div>
             <div className="sum">
                 <p>VAT (INCLUDED)</p>
-                <p>{`$${Math.round(total * .05)}`}</p>
+                <p>{`$${Math.round(total * .2)}`}</p>
             </div>
             <div className="sum">
                 <p>GRAND TOTAL</p>
-                <p>{cartItems.length > 0 ? `$${total + shipping + Math.round(total * .05)}` : "$0"}</p>
+                <p>{cartItems.length > 0 ? `$${total + shipping + Math.round(total * .2)}` : "$0"}</p>
             </div>
             {cartItems.length > 0 ? 
                 <button type="button" onClick={() => {
-                    setConf(true);
+                    setReq(true);
                     document.documentElement.scrollTo({
                         top: 0,
                         left: 0,

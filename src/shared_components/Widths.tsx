@@ -1,5 +1,5 @@
 const widths = {
-    mobileCutoff: "500px",
+    mobileCutoff: "600px",
     tabletCutoff: "950px"
 }
 

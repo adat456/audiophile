@@ -9,7 +9,8 @@
     @include base.background
     @media (min-width: 950px)
         background-image: url("/assets/home/desktop/image-hero.jpg")
-    @media (min-width: 500px) and (max-width: 949px)
+        background-position: center
+    @media (max-width: 949px)
         background-image: url("/assets/home/tablet/image-header.jpg")
 
         display: flex
@@ -17,12 +18,18 @@
         align-items: center
         text-align: center
         padding: 10rem
-    @media (max-width: 499px)
+        background-position: center
+    @media (max-width: 599px)
         background-image: url("/assets/home/mobile/image-header.jpg")
+        padding: 10rem 2rem
+        background-position: center
 
     h1
         font-size: 4rem
         line-height: 4.5rem
+
+        @media (max-width: 599px)
+            font-size: 3.5rem
     
     h1, p
         padding-bottom: 2rem
@@ -39,8 +46,11 @@
     grid-template-columns: 1fr 1fr
     grid-gap: 1.5rem
 
-    @media (min-width: 500px) and (max-width: 949px)
+    @media (min-width: 600px) and (max-width: 949px)
         padding: 4rem 2rem
+
+    @media (max-width: 599px)
+        padding: 4rem 1.5rem
 
     h2
         font-size: 3.5rem
@@ -63,6 +73,9 @@
         padding: 6rem
         border-radius: 0.5rem
 
+        @media (max-width: 599px)
+            padding: 6rem 1.5rem
+
     .zx9
         grid-column: 1 / 3
         display: grid
@@ -70,7 +83,7 @@
         background-color: base.$orange
         position: relative
 
-        @media (min-width: 500px) and (max-width: 949px)
+        @media (max-width: 949px)
             display: flex
             flex-direction: column
             align-items: center
@@ -82,7 +95,7 @@
             position: absolute
             bottom: 10%
 
-            @media (min-width: 500px) and (max-width: 949px)
+            @media (max-width: 949px)
                 position: static
                 width: 50%
                 height: auto
@@ -101,9 +114,9 @@
         @include base.background
         @media (min-width: 950px)
             background-image: url("/assets/home/desktop/image-speaker-zx7.jpg")
-        @media (min-width: 500px) and (max-width: 949px)
+        @media (min-width: 600px) and (max-width: 949px)
             background-image: url("/assets/home/tablet/image-speaker-zx7.jpg")
-        @media (max-width: 499px)
+        @media (max-width: 599px)
             background-image: url("/assets/home/mobile/image-speaker-zx7.jpg")
 
     img
@@ -113,15 +126,23 @@
 
     .yx1-image
         border-radius: 0.5rem
-        
+        grid-column: 1 / 2
         @include base.background
         @media (min-width: 950px)
             background-image: url("/assets/home/desktop/image-earphones-yx1.jpg")
-        @media (min-width: 500px) and (max-width: 949px)
+        @media (min-width: 600px) and (max-width: 949px)
             background-image: url("/assets/home/tablet/image-earphones-yx1.jpg")
-        @media (max-width: 499px)
+        @media (max-width: 599px)
+            grid-column: 1 / 3
+            height: 15rem
             background-image: url("/assets/home/mobile/image-earphones-yx1.jpg")
-
+            
     .yx1
         background-color: base.$off-white
-        padding: 4rem
+        grid-column: 2 / 3
+
+        @media (min-width: 600px) and (max-width: 949px)
+            padding:  4rem 3rem
+
+        @media (max-width: 599px)
+            grid-column: 1 / 3

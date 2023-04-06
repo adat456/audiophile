@@ -106,7 +106,9 @@ const CartPreview: React.FC = ({ setCartModal }) => {
                 <p>SUBTOTAL</p>
                 <p>${total}</p>
             </div>
-            <Link to="/checkout" onClick={() => setCartModal(false)}>CHECKOUT</Link>
+            {cartItems.length === 0 ? 
+                <button type="button" disabled>CHECKOUT</button> : <Link to="/checkout" onClick={() => setCartModal(false)}>CHECKOUT</Link>
+            }
         </div>
     );
 };

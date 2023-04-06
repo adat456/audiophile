@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const OrderConf: React.FC = ({ cartItems, total, setConf }) => {
+const OrderConf: React.FC = ({ cartItems, total, setConf, setReq }) => {
     return (
         <div className="order-conf">
             <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><circle fill="#D87D4A" cx="32" cy="32" r="32"/><path stroke="#FFF" strokeWidth="4" d="m20.754 33.333 6.751 6.751 15.804-15.803"/></g></svg>
@@ -25,7 +25,10 @@ const OrderConf: React.FC = ({ cartItems, total, setConf }) => {
                     <p>{`$${total}`}</p>
                 </div>
             </div>
-            <Link to="/" onClick={() => setConf(false)}>BACK TO HOME</Link>
+            <Link to="/" onClick={() => {
+                setConf(false);
+                setReq(false);
+            }}>BACK TO HOME</Link>
         </div>
     );
 };
