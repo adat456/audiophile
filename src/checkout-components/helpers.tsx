@@ -73,3 +73,27 @@ export function validateCountry(input) {
         input.setCustomValidity("");
     };
 };
+
+export function validateENumber(input) {
+    if (input.validity.valueMissing) {
+        input.setCustomValidity("Please enter your e-money number.");
+        input.reportValidity();
+    } else if (input.validity.patternMismatch) {
+        input.setCustomValidity("Please enter 10 digits, excluding any dashes or spaces.");
+        input.reportValidity();
+    } else {
+        input.setCustomValidity("");
+    };
+};
+
+export function validateEPin(input) {
+    if (input.validity.valueMissing) {
+        input.setCustomValidity("Please enter your e-money pin.");
+        input.reportValidity();
+    } else if (input.validity.patternMismatch) {
+            input.setCustomValidity("Please enter 4 digits, excluding any dashes or spaces.");
+            input.reportValidity();
+    } else {
+        input.setCustomValidity("");
+    };
+};

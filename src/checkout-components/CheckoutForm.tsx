@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { validateName, validateEmail, validateNumber, validateAddress, validateZipcode, validateCity, validateCountry } from "./helpers";
+import { validateName, validateEmail, validateNumber, validateAddress, validateZipcode, validateCity, validateCountry, validateENumber, validateEPin } from "./helpers";
 
 const CheckoutForm: React.FC = ({ cartItems, total, req, setConf }) => {
     const [ name, setName ] = useState("");
@@ -47,9 +47,11 @@ const CheckoutForm: React.FC = ({ cartItems, total, req, setConf }) => {
                 break;
             case "e-money-number":
                 setENumber(input.value);
+                validateENumber(input);
                 break;
             case "e-money-pin":
                 setEPin(input.value);
+                validateEPin(input);
                 break;
             default:
                 return;
@@ -114,8 +116,8 @@ const CheckoutForm: React.FC = ({ cartItems, total, req, setConf }) => {
                 </div>
                 {eMoney ? 
                     <fieldset className="e-money-details">
-                        <label htmlFor="e-money-number">e-Money Number<input type="text" placeholder="238521993" pattern="[0-9]{10}" maxLength="10" value={eNumber} onChange={handleChange} id="e-money-number" /></label>
-                        <label htmlFor="e-money-pin">e-Money PIN<input type="text" placeholder="6891" pattern="[0-9]{4}" maxLength="4" value={ePin} onChange={handleChange} id="e-money-pin" /></label>
+                        <label htmlFor="e-money-number">e-Money Number<input type="text" placeholder="238521993" pattern="[0-9]{10}" maxLength="10" value={eNumber} onChange={handleChange} id="e-money-number" required /></label>
+                        <label htmlFor="e-money-pin">e-Money PIN<input type="text" placeholder="6891" pattern="[0-9]{4}" maxLength="4" value={ePin} onChange={handleChange} id="e-money-pin" required /></label>
                     </fieldset> :
                     <fieldset></fieldset>
                 }
